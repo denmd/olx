@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState,useContext } from 'react';
 
 import Logo from '../../olx-logo.png';
 import './Signup.css';
+import { FirebaseContext } from '../../store/FirebaseContext';
+
 
 export default function Signup() {
+  const [username,setUsername]=useState('');
+  const [useremail,setEmail]=useState('');
+  const [userphone,setPhone]=useState('');
+  const [userpassword,setPassword]=useState('');
+  const {firebase} =useContext(FirebaseContext)
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+
+    firebase.auth().createUserWithEmailAndPassword(useremail,userpassword).then((result)=>{
+      result.user.updateProfile({displayName:username });
+    
+    });
+    
+
+
+  };
+
+
+
   return (
     <div>
       <div className="signupParentDiv">
@@ -14,6 +35,8 @@ export default function Signup() {
           <input
             className="input"
             type="text"
+            value={username}
+            onChange={(e)=>setUsername(e.target.value)}
             id="fname"
             name="name"
             defaultValue="John"
@@ -24,7 +47,9 @@ export default function Signup() {
           <input
             className="input"
             type="email"
-            id="fname"
+            value={useremail}
+            onChange={(e)=>setEmail(e.target.value)}
+            id="email"
             name="email"
             defaultValue="John"
           />
@@ -34,7 +59,9 @@ export default function Signup() {
           <input
             className="input"
             type="number"
-            id="lname"
+            value={userphone}
+            onChange={(e)=>setPhone(e.target.value)}
+            id="phone"
             name="phone"
             defaultValue="Doe"
           />
@@ -44,6 +71,8 @@ export default function Signup() {
           <input
             className="input"
             type="password"
+            value={userpassword}
+            onChange={(e)=>setPassword(e.target.value)}
             id="lname"
             name="password"
             defaultValue="Doe"
