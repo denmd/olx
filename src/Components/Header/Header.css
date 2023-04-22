@@ -111,8 +111,13 @@
   background-color: black;
   height: 2px;
 }
-
-.loginPage a{
+.logbtn{
+  margin: 0;
+  border:none;
+  background-color: transparent;
+   
+}
+.loginPage a,.logbtn{
   text-decoration: none;
 }
 

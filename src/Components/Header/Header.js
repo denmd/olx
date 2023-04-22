@@ -38,7 +38,7 @@ function Header() {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>{user ? ` Welcome ${user.displayName}` : 'Login'}</span>
+          <span>{user ? ` Welcome ${user.displayName}` :  <button className='logbtn' onClick={() => history.push('/login')}>Login</button>}</span>
          
           <hr />
         </div>
@@ -51,7 +51,9 @@ function Header() {
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <span  onClick={()=>{
+           
+           history.push("/create")}}>SELL</span>
           </div>
         </div>
       </div>
