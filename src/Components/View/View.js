@@ -13,7 +13,7 @@
           setUserDetails(doc.data())
         });
       })
-    },[])
+    },[postDetails, firebase])
     return (
       <div className="viewParentDiv">
         <div className="imageShowDiv">
